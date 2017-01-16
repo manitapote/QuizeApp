@@ -1,0 +1,38 @@
+﻿@model IEnumerable<modelTest.Models.person>
+@using modelTest.Models;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Details";
+}
+<div id="CenterPart">
+    @{
+        var i = 1;
+    <div><h2>User Details</h2></div>
+    <table class="table table-striped table-hover ">
+        <tr class="active">
+            <td><b> PersonID</b></td>
+            <td><b> First Name</b></td>
+            <td><b> Last Name</b></td>
+            <td><b> Gender</b></td>
+            <td><b> Email</b></td>
+            <td><b> Test</b></td>
+            <td><b> Total Point</b></td>
+        </tr>
+        @foreach (person p in @Model)
+        {
+            <tr class="active">
+                <td>@i</td>
+                <td>@p.FirstName</td>
+                <td>@p.LastName</td>
+                <td>@p.Gender</td>
+                <td>@p.passwrd</td>
+                <td>@p.Test</td>
+                <td>@p.TotalPoint</td>
+            </tr>
+            i = i + 1;
+        }        
+      </table>
+    <div><a href="/admin/Index"><input type="button" class="editButton btn btn-primary" value="Back" id="back_btn" /></a></div>
+    }
+</div>

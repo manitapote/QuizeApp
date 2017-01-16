@@ -1,0 +1,24 @@
+﻿@model modelTest.Models.person
+
+@{  Layout = "~/Views/Shared/_Layout.cshtml";
+  ViewBag.Title = "Welcome";
+}
+@section Styles {<link href="@Url.Content("~/Content/WelcomeCSS.css")" rel="stylesheet" type="text/css" />}
+@section js {<script src="/Scripts/Welcome.js" type="text/javascript"></script>}
+<div id="CenterPart" class="text-center">
+    <h1>Welcome @Model.FirstName  @Model.LastName to @Model.Test Test</h1>
+    <h2 id="TotalPoint">Your score is @Model.TotalPoint</h2>
+    <h3 id="Intro">Try our quizes to practice and earn points </h3>
+    <div id="questionPart" class="text-left">
+        <div id="QuestionDisplay"></div>
+        <div id="radioBtn"></div>
+        <div id="OptionE_radioBtn"></div>
+        <input type="button" value="Ok" class="btn btn-primary" name="Quize_btn" />
+        <div id="Correct_Incorrect" class="text-danger"></div>
+        <div id="CorrectAns" class="text-info"></div>
+        <div id="detail_welcome" class="text-success"></div>
+        <div id="totalPoint" class="text-info"></div>
+        <div><input type="button" value="Next Question" class="btn btn-primary" name="NextBtn" /></div>
+    </div>
+</div>
+

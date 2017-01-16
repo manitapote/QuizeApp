@@ -1,0 +1,72 @@
+﻿@model modelTest.ViewModel.QsnGreSat_single
+@using modelTest.Models
+
+@{
+    Layout ="~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+@section js {<script src="/Scripts/radioButton.js" type="text/javascript"></script>}
+@section Styles {<link href="@Url.Content("~/Content/Custom.css")" rel="stylesheet" type="text/css" />}
+
+<div id="CenterPart">    
+    <p id="heading">TestOnline</p>  
+    <p id='secondHeading'>The Destination to learn with fun!!</p>
+    <p id="thirdHeading">Try Sample questions</p>
+    
+           
+       @{ question i = new question();
+        if (Convert.ToInt32(Session["QsnID"])< 1)
+        {
+            i = @Model.questionGRE;
+        }
+        else
+        {
+            i = @Model.questionSAT;
+        }        
+        <div id="question">@i.Qsn</div>
+        using (Html.BeginForm("Index", "person", FormMethod.Post, new { @id = "index_fm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            @Html.Hidden("QsnID", i.QsnID)
+           <div id="radioBtn_List">
+               <div>
+                    @Html.RadioButton("answer", i.OptionA,new{@checked=true})
+                    @Html.Label((i.OptionA))
+                </div>
+               <div>
+                    @Html.RadioButton("answer",i.OptionB)
+                    @Html.Label(i.OptionB)
+                </div>
+               <div>
+                    @Html.RadioButton("answer", i.OptionC)
+                    @Html.Label(i.OptionC)
+                </div>
+               <div>                
+                    @Html.RadioButton("answer", i.OptionD)
+                    @Html.Label(i.OptionD)
+                </div>
+            
+                @if (Convert.ToInt32(Session["QsnID"])>=1)
+                {
+                    questionSAT q = (questionSAT)i;
+                    @Html.RadioButton("answer", q.OptionE)
+                    @Html.Label(q.OptionE)
+                }
+            </div>                              
+                    <input type="button" id="index_bt" value="Submit" class="btn btn-default" />
+                
+               
+        }
+        <div id="status"></div>
+        <div id="correctAns"></div>
+        <div id="details"></div>
+        <div><a href="/person/Index"><input type="button" name="Next_btn" id="Next_btn" class="btn btn-default" value="Try Next" /></a></div>
+        <div id="Signinup_btn">
+            <a href="/person/SignIn"><input type="button" name="SignIn_btn" class="btn btn-default"value="SignIn" /></a>
+            <a href="/person/SignUp"><input type="button" name="SignUp_btn" class="btn btn-default" value="SignUp" /></a>
+        </div>
+    }
+</div>
+

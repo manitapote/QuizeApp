@@ -1,0 +1,93 @@
+﻿@model modelTest.ViewModel.QsnGreSat_single
+@using modelTest.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div id="CenterPart">
+    @{
+        question i = new question();
+        if (Convert.ToString(Session["admin_choice"]) == "GRE")
+        {
+            i = @Model.questionGRE;
+        }
+        else
+        {
+            i = @Model.questionSAT;
+        }
+    }
+    @using (Html.BeginForm("Edit", "admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.Hidden("QsnID", i.QsnID)
+        <h2>Edit the question in @Convert.ToString(ViewData["admin_choice"]) section</h2>
+        <div class="form-group">
+            @Html.Label("Question", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("Qsn", i.Qsn, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => i.Qsn)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("OptionA", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("OptionA", i.OptionA, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => @i.OptionA)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("OptionB", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("OptionB", i.OptionB, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => i.OptionB)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("OptionC", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("OptionC", i.OptionC, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => i.OptionC)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("OptionD", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("OptionD", i.OptionD, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => i.OptionD)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @{
+
+        if (Convert.ToString(ViewData["admin_choice"]) == "SAT")
+        {
+            questionSAT q = (questionSAT)i;
+            @Html.Label("OptionE", new { @class = "col-lg-2 control-label mc" })
+                <div class="col-md-10">
+                    @Html.TextArea("OptionE", q.OptionE, new { @class = "form-control mc", @rows = "3", required = "required" })
+                    @*@Html.ValidationMessageFor(model => q.OptionE)*@
+                </div>
+
+        }
+            }
+        </div>
+        <div class="form-group">
+            @Html.Label("Correct Answer", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("CorrectAs", i.CorrectAs, new { @class = "form-control mc", @rows = "3" , required = "required"})
+                @*@Html.ValidationMessageFor(model => i.CorrectAs)*@
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Detail", new { @class = "col-lg-2 control-label mc" })
+            <div class="col-md-10">
+                @Html.TextArea("Detail", i.Detail, new { @class = "form-control mc", @rows = "3", required = "required" })
+                @*@Html.ValidationMessageFor(model => i.Detail)*@
+            </div>
+        </div>
+        <div class="col-lg-6 col-lg-offset-2 mc"><input type="submit" class="btn btn-primary" name="edit_btn" value="EDIT" /></div>
+    }
+</div>
+

@@ -1,0 +1,41 @@
+﻿
+@font-face{
+	font-family:'Auriol-Italic-Normal';
+	src: url('../Scripts/fonts/Auriol-Italic-Normal.ttf')format('truetype');
+}
+
+#heading {
+    font-family: Auriol-Italic-Normal;
+    margin:5px;
+    font-size: 100px;
+}
+
+#CenterPart {
+    text-align: center;
+}
+
+#secondHeading{    
+    font-size:50px;
+    margin:5px;
+}
+
+#thirdHeading, #question, #radioBtn_List{   
+    font-size: 25px;
+    margin:10px;
+}
+
+#radioBtn_List{
+    text-align:left;
+    margin-left:400px;
+}
+
+#index_bt, #Next_btn, input[type], input[name=SignUp_btn]{
+    background-color:#999966;
+    font-size:20px;
+}
+a {
+    text-decoration:none;
+}
+
+body {
+}

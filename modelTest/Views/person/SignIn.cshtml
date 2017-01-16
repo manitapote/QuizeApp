@@ -1,0 +1,34 @@
+﻿@model modelTest.Models.person
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "SignIn";    
+}
+
+<div id="CenterPart">
+    @using (Html.BeginForm("SignIn", "person", FormMethod.Post, new { @class = "form-horizontal" }))
+    {        
+            <fieldset>
+                <legend>SignIn</legend>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="Email" class="control-label col-sm-2">Email:</label>
+                    <div class="col-lg-10">
+                        <input type="email" class="form-control" name="Email" placeholder="Email" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passwrd" class="control-label col-sm-2">Password:</label>
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" name="password" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-primary" name="submit" value="SignIn" />
+                    </div>
+                </div>
+            </fieldset>        
+    }
+</div>
+
